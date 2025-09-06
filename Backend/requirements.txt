@@ -1,0 +1,8 @@
+langchain
+langchain-community
+fastapi
+pymongo
+scikit-learn
+ipykernel
+python-dotenv
+pypdf

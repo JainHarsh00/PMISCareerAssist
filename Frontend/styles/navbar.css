@@ -1,0 +1,110 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* space between center + right */
+  align-items: center;
+  padding: 10px 40px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Center wrapper */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Nav list styling */
+.nav-list {
+  display: flex;
+  gap: 64px;
+  list-style: none;
+  padding: 10px 28px;
+  /* border-radius: 40px; */
+
+  /* background: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); */
+  /* border: 1px solid rgba(0, 180, 216, 0.3); */
+}
+
+/* Nav links */
+.nav-item a {
+  color: #ffffff;
+  font-size:x-large;
+  font-weight: 200;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: #90e0ef;
+}
+
+/* Search bar */
+.nav-search {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+
+  background: rgba(255, 255, 255, 0.064);
+  color: #ffffff;
+}
+
+/* .nav-search::placeholder {
+  color: #adb5bd;
+} */
+
+/* Globe bubble */
+.nav-globe {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(0, 180, 216, 0.092); */
+  /* border: 1px solid rgba(0, 180, 216, 0.4); */
+  /* backdrop-filter: blur(10px) */
+  border-radius: 100%;
+  /* padding: 10px; */
+  /* padding: 5px 6px; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+/* Dropdown menu */
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 180, 216, 0.15);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 999;
+}
+
+.dropdown button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown button:hover {
+  background: rgba(0, 180, 216, 0.3);
+}

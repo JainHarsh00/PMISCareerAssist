@@ -1,0 +1,83 @@
+.trusted-section {
+  width: 100%;
+  /* background-color: #1e1e1e; */
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* important for slider */
+}
+
+.trusted-section h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.trusted-section p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.company-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0; /* add vertical space so scaled cards fit */
+}
+
+.company-track {
+  display: flex;
+  gap: 50px;
+  animation: scrollLoop 20s linear infinite;
+  width: max-content;
+  align-items: center; /* keep cards centered vertically */
+}
+.company-card {
+  background-color: rgba(0, 180, 216, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 250px;
+  max-width: 300px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.company-card:hover {
+  transform: scale(1.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid #fff;
+  z-index: 2; /* keep scaled card on top */
+}
+
+.company-code {
+  background-color: #3a3f51;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.company-info h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+
+.company-info p {
+  font-size: 14px;
+  color: #bbb;
+  margin: 0;
+}
+
+/* Infinite scroll animation */
+@keyframes scrollLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

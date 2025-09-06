@@ -1,0 +1,305 @@
+/* Background */
+.form-page {
+  min-height: 84vh;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 1.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.08); /* Frosty white */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px; /* Frost */
+  backdrop-filter: blur(25px) saturate(120%);
+  -webkit-backdrop-filter: blur(25px) saturate(120%); /* Depth & Refraction */
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+    /* inner highlight */ inset -2px -2px 6px rgba(0, 0, 0, 0.2),
+    /* inner depth */ 0 8px 25px rgba(0, 0, 0, 0.4); /* outer drop shadow */ /* Dispersion effect (light angle) */
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.034),
+    rgba(255, 255, 255, 0.05)
+  );
+  color: rgb(255, 255, 255);
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;       /* This makes child elements (columns) fill height */
+  gap: 28px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Glass form container */
+
+.form-container {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 8rem 3rem;
+  width: 100%;
+  height: 100%; 
+  backdrop-filter: blur(12px);
+  justify-content:flex-start;
+  color: white;
+} 
+
+/* Labels */
+form label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+/* Input + Dropdown */
+form label {
+  display: block;
+  margin: 10px 0 6px 0;
+  font-size: 15px;
+  color: #f1f2f6;
+  font-weight: 500;
+  text-align: left;          /* Ensure left alignment */
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+  color: #242d38;            /* Darker text for contrast */
+  background: rgba(255,255,255,0.94);
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;    /* Ensures width matches label */
+  font-weight: 500;
+  transition: box-shadow 0.13s, background 0.15s;
+  box-shadow: 0 2px 8px rgba(81,102,150,0.08);
+}
+
+/* Add some subtle focus state */
+form input:focus,
+form select:focus {
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(76,202,240,0.13);
+}
+
+/* Optional: remove harsh color for select's options for glass consistency */
+form select option {
+  background: #f4f7fa;
+  color: #242d38;
+}
+
+/* Dropdown customization */
+form select option {
+  background: #242d45;
+  color: white;
+} 
+
+/* File upload */
+.file-upload {
+  margin: 10px 0 20px;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed white;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s;
+}
+
+.file-label:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.file-label span {
+  font-size: 14px;
+}
+
+.file-label small {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #ccc;
+} 
+
+/* Submit button */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  border: 1px solid white;
+  color: white;
+  border-radius: 25px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: white;
+  color: black;
+}
+
+
+/* Cards */
+.job-card {
+  margin: 4rem;
+  background: #00000069;
+  box-shadow: 0 8px 24px rgba(18, 20, 49, 0.12);
+  border-radius: 18px;
+  border: 1.2px solid rgba(255,255,255,0.22);
+  padding: 24px 48px;
+  min-width: 580px;
+  position: relative;
+  color: #fff;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  transition: box-shadow 0.18s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Header section spacing */
+.job-card h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  letter-spacing: .5px;
+  margin-bottom: 0.1em;
+  margin-top: 0;
+}
+
+.job-card .role {
+  font-size: 1.1rem;
+  color: #ccd8ee;
+  margin-bottom: 18px;
+}
+
+/* Details and Score Row Styling */
+.job-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.job-details {
+  display: flex;
+  gap: 24px;
+  color: #d3d8e6;
+  font-size: 1.11rem;
+  align-items: center;
+}
+
+.score {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 300;
+  white-space: nowrap;
+  margin-right: 6px;
+  opacity: .98;
+
+}
+
+/* Button styling for glass effect */
+.view-btn {
+  margin-top: 8px;
+  background: linear-gradient(180deg, #151b27 60%, #09132b 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 14px 60px;
+  font-weight: 500;
+  font-size: 1.18rem;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  border: 1.2px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 3.5px 14px 2.5px rgba(20, 26, 46, 0.32), 
+              0 1px 0 #2e3441 inset, 
+              0 0.5px 18px 0px rgba(255,255,255,0.13) inset;
+  transition: background 0.18s, box-shadow 0.18s, border 0.13s;
+  backdrop-filter: blur(2px) saturate(90%); /* 'Frost' and 'Refraction' */
+  -webkit-backdrop-filter: blur(4px) saturate(120%);
+  position: relative;
+  overflow: hidden;
+}
+
+.view-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.14) 5%, rgba(255,255,255,0.04) 90%);
+  opacity: 0.5; /* Simulate light/refraction across the surface */
+  z-index: 1;
+}
+
+.view-btn:hover {
+  background: linear-gradient(180deg, #283964 85%, #1a2237 100%);
+  box-shadow: 0 6px 22px 3px rgba(25, 34, 57, 0.19);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.job-card::after {
+  content: "";
+  border-radius: 18px;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  z-index: 2;
+}
+
+@media (max-width:900px) {
+  .form-wrapper {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .cards-container {
+    margin-left: 0;
+    align-items: center;
+  }
+  .job-card {
+    min-width: 270px;
+    padding: 25px 16px 18px 20px;
+  }
+  .score {
+    top: 15px;
+    right: 18px;
+    font-size: .9rem;
+  }
+   .form-wrapper {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+  .cards-container {
+    margin-left: 0;
+    align-items: center;
+  }
+}
+
+.job-card::after {
+  content: "";
+  border-radius: 18px;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  z-index: 2;
+}
