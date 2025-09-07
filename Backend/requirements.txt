@@ -8,3 +8,4 @@ scikit-learn
 ipykernel
 python-dotenv
 pypdf
+python-multipart
