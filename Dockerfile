@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY Backend/ . 
 
 # Copy React build
-COPY Backend/frontend/dist
+COPY Backend/frontend/dist ./frontend/dist
 
 # Expose FastAPI port
 EXPOSE 8000
