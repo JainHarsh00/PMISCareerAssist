@@ -137,3 +137,28 @@ body {
     min-width: unset;
   }
 }
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;             /* center vertically */
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ffffffcc;         /* soft white */
+  animation: fadePulse 2s infinite;
+  text-align: center;
+}
+
+/* Smooth fading pulse effect */
+@keyframes fadePulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.no-results span {
+  color: #61dafb;   /* highlight search text (React blue) */
+  font-style: italic;
+}
+

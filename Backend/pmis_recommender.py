@@ -22,48 +22,55 @@ def extract_cv_text(cv_path: str) -> str:
     pages = loader.load()
     return " ".join([page.page_content for page in pages])
 
-def recommend_internships(student_profile: str, top_k: int = 5):
-    """Finds top internship matches based on cosine similarity."""
+def recommend_internships(student_profile: dict, top_k: int = 5, weights: dict = None):
+    if weights is None:
+        weights = {'key_fields': 0.7, 'cv_text': 0.3}
+
     internships = list(internships_collection.find({}, {"_id": 0}))
-    internship_texts = [
-        internship["job_description"] + " " + internship.get("eligibility_criteria", "")
+    internship_job_descriptions = [
+        internship["job_description"] for internship in internships
+    ]
+
+    # Combine key fields for student and internships
+    student_key_profile = (
+        f"{student_profile.get('designation', '')} "
+        f"{student_profile.get('internship_type', '')} "
+        f"{student_profile.get('location', '')} "
+        f"{student_profile.get('duration', '')}"
+    )
+
+    internship_eligibility_and_skills = [
+        internship.get("eligibility_criteria", "") + " " + " ".join(internship.get("required_skills", []))
         for internship in internships
     ]
 
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform(internship_texts + [student_profile])
+    # --- Step 1: Calculate similarity for the high-priority key fields ---
+    key_vectorizer = TfidfVectorizer()
+    key_tfidf_matrix = key_vectorizer.fit_transform(internship_eligibility_and_skills + [student_key_profile])
+    key_similarities = cosine_similarity(key_tfidf_matrix[-1], key_tfidf_matrix[:-1]).flatten()
 
-    similarities = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[:-1]).flatten()
-    ranked_indices = similarities.argsort()[::-1][:top_k]
+    # --- Step 2: Calculate similarity for the lower-priority CV text ---
+    cv_vectorizer = TfidfVectorizer()
+    cv_tfidf_matrix = cv_vectorizer.fit_transform(internship_job_descriptions + [student_profile.get('cv_text', '')])
+    cv_similarities = cosine_similarity(cv_tfidf_matrix[-1], cv_tfidf_matrix[:-1]).flatten()
+
+    # --- Step 3: Combine scores using a weighted average ---
+    # Ensure both arrays have the same length
+    if len(key_similarities) != len(cv_similarities):
+        print("Error: Similarity arrays have different lengths.")
+        return []
+
+    weighted_similarities = (
+        (key_similarities * weights['key_fields']) +
+        (cv_similarities * weights['cv_text'])
+    )
+
+    # Rank the internships based on the new weighted score
+    ranked_indices = weighted_similarities.argsort()[::-1][:top_k]
 
     recommendations = []
     for idx in ranked_indices:
         rec = internships[idx].copy()
-        rec["similarity"] = round(float(similarities[idx]), 3)
+        rec["similarity"] = round(float(weighted_similarities[idx]), 3)
         recommendations.append(rec)
     return recommendations
-
-if __name__ == "__main__":
-    print("=== Student Internship Input ===")
-    designation = input("Enter preferred designation: ")
-    duration = input("Enter duration (in months): ")
-    work_type = input("Enter work mode (On-site/Online): ")
-    stipend_pref = input("Enter stipend preference (Paid/Unpaid): ")
-    location = input("Enter preferred location: ")
-    cv_path = input("Enter path to your CV (PDF): ")
-
-    # Extract CV text
-    cv_text = extract_cv_text(cv_path)
-
-    # Build student profile text
-    student_profile = f"{designation} {duration} {work_type} {stipend_pref} {location} {cv_text}"
-
-    # Get top 5 recommendations
-    recommendations = recommend_internships(student_profile)
-
-    print("\n=== Top Internship Recommendations ===")
-    for i, rec in enumerate(recommendations, 1):
-        print(f"\n{i}. {rec['role_title']} at {rec['company_name']}")
-        print(f"   Location: {rec['location']}, Duration: {rec['duration_months']} months")
-        print(f"   Stipend: {rec['stipend_amount']}, Mode: {rec['work_mode']}")
-        print(f"   Similarity Score: {rec['similarity']}")

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/landingPage.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -31,6 +32,11 @@ export default function LandingPage() {
   };
   const [lang, setLang] = useState("en");
   const t = translations[lang] || translations.en;
+
+  const navigate = useNavigate();
+  const handleGetStartedClick = () => {
+    navigate("/form"); // Navigate to the /form page
+  };
 
   return (
     <>
@@ -73,6 +79,7 @@ export default function LandingPage() {
               <button
                 className="btn btn--primary btn--lg hero-btn"
                 id="getStartedBtn"
+                onClick={handleGetStartedClick}
               >
                 <span>{t.cta}</span>
                 

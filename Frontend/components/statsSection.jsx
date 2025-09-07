@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/statsSection.css";
 
 // 👇 Stat Item with count-up animation
@@ -48,7 +49,11 @@ const StatItem = ({ target, label, duration = 2000 }) => {
 
 export default function StatsSection() {
   const buttonRef = useRef(null);
-
+  const navigate = useNavigate(); // Initialize useNavigate
+  
+    const handleSearchClick = () => {
+      navigate("/search"); // Navigate to the /search page
+    };
 
   return (
     <section className="stats-section">
@@ -61,7 +66,7 @@ export default function StatsSection() {
             connecting them with the right internships and jobs to grow, learn,
             and succeed.
           </h2>
-          <button ref={buttonRef} className="blur-btn">
+          <button ref={buttonRef} className="blur-btn" onClick={handleSearchClick}>
             Search
           </button>
         </div>

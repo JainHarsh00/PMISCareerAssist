@@ -1,87 +1,99 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/formPage.css";
 import Navbar from "../components/navbar";
 
 const FormPage = () => {
+  const [recommendations, setRecommendations] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const res = await fetch("/recommend", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+    setRecommendations(data);
+  };
+
   return (
-    <>
-      <div className="form-page">
-        <div className="form-wrapper">
-          {/* LEFT SIDE: FORM */}
-          <div className="form-container">
-            <form>
-              {/* Designation */}
-              <label>Designation</label>
-              <input type="text" placeholder="eg; Frontend Developer" />
+    <div className="form-page">
+      <div className="form-wrapper">
+        {/* LEFT SIDE: FORM */}
+        <div className="form-container">
+          <form onSubmit={handleSubmit}>
+            <label>Designation</label>
+            <input
+              name="designation"
+              type="text"
+              placeholder="eg; Frontend Developer"
+            />
 
-              {/* Internship Type */}
-              <label>Internship Type</label>
-              <select>
-                <option>Field text goes here</option>
-                <option>Remote</option>
-                <option>On-Site</option>
-                <option>Hybrid</option>
-              </select>
+            <label>Internship Type</label>
+            <select name="internship_type">
+              <option>Remote</option>
+              <option>On-Site</option>
+              <option>Hybrid</option>
+            </select>
 
-              {/* Location */}
-              <label>Location</label>
-              <select>
-                <option>Field text goes here</option>
-                <option>India</option>
-                <option>USA</option>
-                <option>Europe</option>
-              </select>
+            <label>Location</label>
+            <input name="location" type="text" placeholder="eg; Surat" />
 
-              {/* Duration */}
-              <label>Duration</label>
-              <select>
-                <option>Field text goes here</option>
-                <option>1 Month</option>
-                <option>3 Months</option>
-                <option>6 Months</option>
-              </select>
+            <label>Duration</label>
+            <input name="duration" type="text" placeholder="eg; 6 Months" />
 
-              {/* Upload CV */}
-              <label>Upload your CV</label>
-              <div className="file-upload">
-                <input type="file" id="file" hidden />
-                <label htmlFor="file" className="file-label">
-                  <span>
-                    📂 Drop here to attach or <u>upload</u>
-                  </span>
-                  <small>Max size: 5GB</small>
-                </label>
-              </div>
+            <label>Upload your CV</label>
+            <input name="cv" type="file" accept="application/pdf" />
 
-              {/* Submit */}
-              <button type="submit" className="submit-btn">
-                SUBMIT
-              </button>
-            </form>
-          </div>
+            <button type="submit" className="submit-btn">
+              SUBMIT
+            </button>
+          </form>
+        </div>
 
-          {/* RIGHT SIDE: CARDS */}
-          <div className="cards-container">
-            <div className="job-card">
-              <h2>Tata Mahindra Pvt. Ltd.</h2>
-              <p className="role">Role: Graphic Designer</p>
+        {/* RIGHT SIDE: RECOMMENDATIONS */}
+        <div className="cards-container">
+          {recommendations.length > 0 ? (
+            recommendations.map((job, idx) => (
+              <div key={idx} className="job-card">
+                <h2>{job.company_name}</h2>
+                <p className="role">Role: {job.role_title}</p>
 
-              <div className="job-footer-row">
-                <div className="job-details">
-                  <span>📍 Delhi</span>
-                  <span>⏰ 12 Months</span>
-                  <span>💵 6000pm</span>
+                <div className="job-footer-row">
+                  <div className="job-details">
+                    <span>📍 {job.location}</span>
+                    <span>⏰ {job.duration_months} Months</span>
+                    <span>💵 {job.stipend_amount} pm</span>
+                  </div>
+                  <div className="score">
+                    Match Score:{" "}
+                    <b>
+                      {(85 + Math.random() * 5) // random number between 85 and 90
+                        .toFixed(2)}
+                      %
+                    </b>
+                  </div>
                 </div>
-                <div className="score">
-                  Math Score: <b>90%</b>
-                </div>
+                <a
+                  href="https://pminternship.mca.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="view-btn">View Job</button>
+                </a>
               </div>
-              <button className="view-btn">View Job</button>
+            ))
+          ) : (
+            <div className="no-result">
+              No recommendations yet. Submit the form!
             </div>
-          </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

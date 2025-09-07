@@ -43,7 +43,7 @@
   border: 1px solid white;
   border-radius: 20px;
   padding: 8rem 3rem;
-  width: 100%;
+  width: 40%;
   height: 100%; 
   backdrop-filter: blur(12px);
   justify-content:flex-start;
@@ -156,6 +156,14 @@ form select option {
 
 
 /* Cards */
+.cards-container {
+  /* flex: 1;                   */
+  overflow-y: auto;           
+  max-height: 90vh;          
+      
+}
+
+
 .job-card {
   margin: 4rem;
   background: #00000069;
@@ -302,4 +310,36 @@ form select option {
   inset: 0;
   border: 1.5px solid rgba(255,255,255,0.18);
   z-index: 2;
+}
+
+
+.no-result {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  height: 100%;              /* take full height of container */
+  width: 100%;               /* take full width */
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ffffff;
+  animation: fadePulse 2s infinite;
+  text-align: center;
+  margin: 0;                 /* remove extra margin */
+  padding: 0;                /* remove padding issues */
+  position: absolute;        /* force it in middle of container */
+  top: 40%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+}
+
+/* Smooth fading pulse effect */
+@keyframes fadePulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.no-result span {
+  color: #61dafb;   /* highlight search text (React blue) */
+  font-style: italic;
 }
