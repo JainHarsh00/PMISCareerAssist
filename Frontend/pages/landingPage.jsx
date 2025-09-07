@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/landingPage.css";
 import Navbar from "../components/navbar";
@@ -7,33 +7,8 @@ import StatsSection from "../components/statsSection";
 import TrustedCompanies from "../components/companiesSection";
 
 export default function LandingPage() {
-  const translations = {
-    en: {
-      badge: "✨ AI-Powered Matching",
-      title: "PM Internship AI Recommender",
-      subtitle:
-        "Discover your perfect government internship match with our advanced AI recommendation system",
-      cta: "Get Started",
-    },
-    hi: {
-      badge: "✨ एआई-संचालित मिलान",
-      title: "पीएम इंटर्नशिप एआई सिफारिशकर्ता",
-      subtitle:
-        "हमारी उन्नत एआई अनुशंसा प्रणाली के साथ अपनी परफेक्ट सरकारी इंटर्नशिप खोजें",
-      cta: "शुरू करें",
-    },
-    ta: {
-      badge: "✨ செயற்கை நுண்ணறிவு பொருத்தம்",
-      title: "பிஎம் இன்டர்ன்ஷிப் ஏஐ பரிந்துரையாளர்",
-      subtitle:
-        "எங்கள் மேம்பட்ட ஏஐ பரிந்துரைக் கருவியுடன் உங்கள் சரியான அரசு இன்டர்ன்ஷிப்பை கண்டறியுங்கள்",
-      cta: "தொடங்கவும்",
-    },
-  };
-  const [lang, setLang] = useState("en");
-  const t = translations[lang] || translations.en;
-
   const navigate = useNavigate();
+
   const handleGetStartedClick = () => {
     navigate("/form"); // Navigate to the /form page
   };
@@ -42,7 +17,7 @@ export default function LandingPage() {
     <>
       {/* Parallax Background */}
       <div className="parallax-container">
-        <Navbar lang={lang} setLang={setLang} />
+        {/* <Navbar /> */}
         <div className="parallax-layer" data-speed="0.2">
           <div className="floating-shape shape-1"></div>
           <div className="floating-shape shape-2"></div>
@@ -64,16 +39,17 @@ export default function LandingPage() {
               className="hero-badge animate-in"
               style={{ "--delay": "0.8s" }}
             >
-              <span>{t.badge}</span>
+              <span>✨ AI-Powered Matching</span>
             </div>
             <h1 className="hero-title animate-in" style={{ "--delay": "1.4s" }}>
-              {t.title}
+              PM Internship AI Recommender
             </h1>
             <p
               className="hero-subtitle animate-in"
               style={{ "--delay": "1.6s" }}
             >
-              {t.subtitle}
+              Discover your perfect government internship match with our
+              advanced AI recommendation system
             </p>
             <div className="hero-cta animate-in" style={{ "--delay": "1.8s" }}>
               <button
@@ -81,8 +57,7 @@ export default function LandingPage() {
                 id="getStartedBtn"
                 onClick={handleGetStartedClick}
               >
-                <span>{t.cta}</span>
-                
+                <span>Get Started</span>
               </button>
             </div>
           </div>

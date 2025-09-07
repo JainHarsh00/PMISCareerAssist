@@ -1,6 +1,6 @@
 /* Background */
 .form-page {
-  min-height: 84vh;
+  min-height: 60vh;
   width: 80%;
   margin-left: 10%;
   margin-bottom: 1.5%;
@@ -159,7 +159,7 @@ form select option {
 .cards-container {
   /* flex: 1;                   */
   overflow-y: auto;           
-  max-height: 90vh;          
+  max-height: 115vh;          
       
 }
 
@@ -171,7 +171,7 @@ form select option {
   border-radius: 18px;
   border: 1.2px solid rgba(255,255,255,0.22);
   padding: 24px 48px;
-  min-width: 580px;
+  max-width: 580px;
   position: relative;
   color: #fff;
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
@@ -214,7 +214,7 @@ form select option {
 
 .score {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 300;
   white-space: nowrap;
   margin-right: 6px;
@@ -300,16 +300,6 @@ form select option {
     margin-left: 0;
     align-items: center;
   }
-}
-
-.job-card::after {
-  content: "";
-  border-radius: 18px;
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  border: 1.5px solid rgba(255,255,255,0.18);
-  z-index: 2;
 }
 
 

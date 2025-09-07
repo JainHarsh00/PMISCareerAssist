@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 56px;
+  padding-top: 15px;
   background: transparent;
 }
 
@@ -71,7 +71,7 @@ body {
   color: #f6f8fc;
   /* min-width: 640px; */
   width: 100%;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 26px auto;
   font-family: inherit;
   box-shadow: 0 8px 28px 3px rgba(18, 19, 29, 0.18);
   position: relative;
@@ -82,21 +82,21 @@ body {
 
 .search-job-card h2 {
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 0.45em;
   margin-top: 0;
 }
 
 .search-job-card .role {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #cfdeef;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .job-details {
   display: flex;
   gap: 30px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #e0e6f3;
   margin-bottom: 25px;
 }
@@ -108,7 +108,7 @@ body {
   border-radius: 12px;
   padding: 12px 58px;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   letter-spacing: 1.1px;
   cursor: pointer;
   border: 1.2px solid rgba(255,255,255,0.12);

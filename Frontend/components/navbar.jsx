@@ -5,32 +5,20 @@ import { CiGlobe } from "react-icons/ci";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [lang, setLang] = useState("en");
 
-  const handleLanguageChange = (lang) => {
-    document.documentElement.lang = lang;
+  const translations = {
+    en: { home: "Home", explore: "Explore", search: "Search" },
+    hi: { home: "होम", explore: "अन्वेषण", search: "खोज" },
+    ta: { home: "முகப்பு", explore: "ஆராய", search: "தேடல்" },
+    te: { home: "హోమ్", explore: "అన్వేషించండి", search: "వెతకండి" },
+    bn: { home: "হোম", explore: "অন্বেষণ", search: "অনুসন্ধান" },
+  };
 
-    const navItems = document.querySelectorAll(".nav-item a");
-
-    if (lang === "hi") {
-      navItems[0].textContent = "होम"; // Home
-      navItems[1].textContent = "अन्वेषण"; // Explore
-      navItems[2].textContent = "खोज"; // Search
-      document.querySelector(".nav-search")?.setAttribute("placeholder", "खोज");
-    } else if (lang === "ta") {
-      navItems[0].textContent = "முகப்பு";
-      navItems[1].textContent = "ஆராய";
-      navItems[2].textContent = "தேடல்";
-      document
-        .querySelector(".nav-search")
-        ?.setAttribute("placeholder", "தேடல்");
-    } else {
-      navItems[0].textContent = "Home";
-      navItems[1].textContent = "Explore";
-      navItems[2].textContent = "Search";
-      document
-        .querySelector(".nav-search")
-        ?.setAttribute("placeholder", "Search...");
-    }
+  const handleLanguageChange = (language) => {
+    setLang(language);
+    document.documentElement.lang = language; // optional
+    setOpen(false);
   };
 
   return (
@@ -39,21 +27,21 @@ export default function Navbar() {
       <div className="nav-center">
         <ul className="nav-list">
           <li className="nav-item">
-            <Link to="/">Home</Link>
+            <Link to="/">{translations[lang].home}</Link>
           </li>
           <li className="nav-item">
-            <Link to="/form">Explore</Link>
+            <Link to="/form">{translations[lang].explore}</Link>
           </li>
           <li className="nav-item">
-            <Link to="/search">Search</Link>
+            <Link to="/search">{translations[lang].search}</Link>
           </li>
         </ul>
       </div>
 
       {/* Right globe with dropdown */}
       <div className="nav-globe" onClick={() => setOpen(!open)}>
-        <CiGlobe size="2.5em"/>
-        <p>EN</p>
+        <CiGlobe size="2.5em" />
+        <p>{lang.toUpperCase()}</p>
         {open && (
           <div className="dropdown">
             <button onClick={() => handleLanguageChange("en")}>English</button>
