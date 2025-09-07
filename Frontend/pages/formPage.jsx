@@ -69,12 +69,7 @@ const FormPage = () => {
                     <span>💵 {job.stipend_amount} pm</span>
                   </div>
                   <div className="score">
-                    Match Score:{" "}
-                    <b>
-                      {(85 + Math.random() * 5) // random number between 85 and 90
-                        .toFixed(2)}
-                      %
-                    </b>
+                    Match Score: <b>{(job.similarity * 100).toFixed(2)} %</b>
                   </div>
                 </div>
                 <a

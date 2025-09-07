@@ -80,7 +80,6 @@ async def recommend(
         'location': location,
         'duration': duration,
         'cv_text': cv_text,
-        'skills': skills_list
     }
 
     recommendations = recommend_internships(student_profile, top_k=5)
