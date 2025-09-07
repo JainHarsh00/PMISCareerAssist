@@ -1,6 +1,8 @@
 langchain
 langchain-community
 fastapi
+uvicorn
+numpy
 pymongo
 scikit-learn
 ipykernel
