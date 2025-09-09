@@ -7,7 +7,7 @@ This project develops an **AI-powered recommendation engine** that helps applica
 
 ---
 
-Try : https://pmiscareerassist-production-5297.up.railway.app/search
+Try : https://pmiscareerassist-production-5297.up.railway.app/
 
 ---
 
