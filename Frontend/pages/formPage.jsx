@@ -24,7 +24,15 @@ const FormPage = () => {
       <div className="form-wrapper">
         {/* LEFT SIDE: FORM */}
         <div className="form-container">
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault(); // prevent accidental new line
+                handleSubmit(e); // trigger submit
+              }
+            }}
+          >
             <label>Designation</label>
             <input
               name="designation"

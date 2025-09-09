@@ -33,7 +33,7 @@ def extract_cv_text(cv_path: str) -> str:
 # --- Main recommendation function ---
 def recommend_internships(student_profile: dict, top_k: int = 5, weights: dict = None):
     if weights is None:
-        weights = {'key_fields': 0.8, 'cv_text': 0.2}
+        weights = {'key_fields': 0.6, 'cv_text': 0.4}
 
     # Fetch internships from MongoDB
     internships = list(internships_collection.find({}, {"_id": 0}))
