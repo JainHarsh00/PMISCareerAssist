@@ -162,3 +162,147 @@ body {
   font-style: italic;
 }
 
+@media (max-width: 960px) {
+  .search-bar-container,
+  .search-results-container {
+    width: 97vw;
+    min-width: unset;
+    max-width: 100%;
+  }
+  .search-job-card {
+    padding: 27px 6vw;
+    min-width: unset;
+  }
+}
+
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;             /* center vertically */
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #ffffffcc;         /* soft white */
+  animation: fadePulse 2s infinite;
+  text-align: center;
+}
+
+/* Smooth fading pulse effect */
+@keyframes fadePulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.no-results span {
+  color: #61dafb;   /* highlight search text (React blue) */
+  font-style: italic;
+}
+/* ==============================================
+   4. SEARCHPAGE.CSS - Add this to the bottom
+   ============================================== */
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .search-page {
+    padding-top: 10px;
+  }
+  
+  .search-bar-container {
+    width: 95vw;
+    margin: 0 auto 30px auto;
+  }
+  
+  .search-bar {
+    padding: 15px 40px 15px 50px;
+    font-size: 1rem;
+    border-radius: 25px;
+  }
+  
+  .search-icon {
+    left: 18px;
+    font-size: 1.2rem;
+  }
+  
+  .search-results-container {
+    width: 95vw;
+  }
+  
+  .search-job-card {
+    padding: 25px 20px;
+    border-radius: 15px;
+    margin: 0 auto 20px auto;
+  }
+  
+  .search-job-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.3em;
+  }
+  
+  .search-job-card .role {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .job-details {
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .view-btn {
+    padding: 10px 40px;
+    font-size: 1.1rem;
+    letter-spacing: 0.8px;
+    align-self: center;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .no-results {
+    height: 50vh;
+    font-size: 1.2rem;
+    padding: 0 20px;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .search-bar-container {
+    width: 90vw;
+    max-width: 600px;
+  }
+  
+  .search-bar {
+    padding: 16px 42px 16px 52px;
+    font-size: 1.1rem;
+  }
+  
+  .search-results-container {
+    width: 90vw;
+  }
+  
+  .search-job-card {
+    padding: 32px 30px;
+    max-width: 700px;
+  }
+  
+  .search-job-card h2 {
+    font-size: 1.8rem;
+  }
+  
+  .search-job-card .role {
+    font-size: 1.1rem;
+  }
+  
+  .job-details {
+    gap: 20px;
+    font-size: 1rem;
+  }
+  
+  .view-btn {
+    padding: 11px 50px;
+    font-size: 1.3rem;
+  }
+}

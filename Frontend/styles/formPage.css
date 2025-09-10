@@ -346,3 +346,42 @@ form select option {
   color: #61dafb;   /* highlight search text (React blue) */
   font-style: italic;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .form-page {
+    margin-left: 6%;     /* center it */
+    height: auto;          /* let it expand naturally */
+    flex-direction: column;
+  }
+
+  .form-wrapper {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 16px;
+  }
+
+  .form-container {
+    flex: none;            /* remove fixed 30% */
+    width: 90%;           /* take full width */
+    height: auto;          /* allow to expand */
+    padding: 1.5rem;       /* reduce padding for phone */
+  }
+
+  .cards-container {
+    width: 100%;
+    max-height: none;      /* remove fixed scrolling */
+    overflow: visible;
+  }
+
+  .job-card {
+    margin: 1rem auto;
+    width: 90%;
+    padding: 20px;
+  }
+
+  .no-result {
+    display: none !important; /* hide no result on phone */
+  }
+}

@@ -83,3 +83,176 @@
   color: #ffffff;
   margin-top: 0.5rem;
 }
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .stats-section {
+    height: auto;
+    padding: 2rem 1rem;
+    margin-bottom: 10%;
+  }
+  
+  .stats-container {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .stats-left h2 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  
+  .blur-btn {
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .stats-right {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    justify-items: center;
+  }
+  
+  .stat-item h3 {
+    font-size: 2.5rem;
+  }
+  
+  .stat-item p {
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .stats-section {
+    height: auto;
+    padding: 2rem 1.5rem;
+  }
+  
+  .stats-container {
+    flex-direction: column;
+    gap: 4rem;
+    text-align: center;
+  }
+  
+  .stats-left h2 {
+    font-size: 1.8rem;
+  }
+  
+  .blur-btn {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+  }
+  
+  .stats-right {
+    max-width: 400px;
+    justify-self: center;
+  }
+  
+  .stat-item h3 {
+    font-size: 3.5rem;
+  }
+  
+  .stat-item p {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==============================================
+   6. TRUSTEDCOMPANIES.CSS - Add this to the bottom
+   ============================================== */
+
+/* Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .trusted-section {
+    padding: 40px 15px;
+  }
+  
+  .trusted-section h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  
+  .trusted-section p {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .company-slider {
+    padding: 30px 0;
+  }
+  
+  .company-track {
+    gap: 30px;
+    animation-duration: 25s;
+  }
+  
+  .company-card {
+    min-width: 200px;
+    max-width: 250px;
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .company-card:hover {
+    transform: scale(1.1);
+  }
+  
+  .company-code {
+    padding: 8px 12px;
+    font-size: 12px;
+    align-self: center;
+  }
+  
+  .company-info h3 {
+    font-size: 14px;
+  }
+  
+  .company-info p {
+    font-size: 12px;
+  }
+}
+
+/* Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .trusted-section {
+    padding: 50px 20px;
+  }
+  
+  .trusted-section h2 {
+    font-size: 24px;
+  }
+  
+  .company-track {
+    gap: 40px;
+  }
+  
+  .company-card {
+    min-width: 220px;
+    max-width: 280px;
+    padding: 18px;
+  }
+  
+  .company-card:hover {
+    transform: scale(1.15);
+  }
+  
+  .company-code {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  
+  .company-info h3 {
+    font-size: 15px;
+  }
+  
+  .company-info p {
+    font-size: 13px;
+  }
+}
